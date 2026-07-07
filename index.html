@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>National Angus Pint Monitoring Service</title>
+
+<style>
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+
+background:#081b33;
+color:white;
+
+}
+
+header{
+
+background:#002147;
+padding:35px;
+text-align:center;
+border-bottom:5px solid #f5c542;
+
+}
+
+header h1{
+
+font-size:42px;
+
+}
+
+header p{
+
+margin-top:10px;
+font-size:18px;
+
+}
+
+
+.container{
+
+max-width:1200px;
+margin:auto;
+padding:30px;
+
+}
+
+
+.alert{
+
+background:#b5121b;
+padding:25px;
+border-radius:12px;
+font-size:28px;
+text-align:center;
+font-weight:bold;
+
+animation:pulse 2s infinite;
+
+}
+
+
+@keyframes pulse{
+
+50%{
+
+opacity:.6;
+
+}
+
+}
+
+
+
+.card{
+
+background:#102b4c;
+border-radius:15px;
+padding:30px;
+margin-top:25px;
+box-shadow:0 10px 30px rgba(0,0,0,.4);
+
+}
+
+
+.grid{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:20px;
+
+}
+
+
+
+.big{
+
+font-size:70px;
+text-align:center;
+font-weight:bold;
+color:#f5c542;
+
+}
+
+
+
+.counter{
+
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:15px;
+margin-top:20px;
+
+}
+
+
+.timer{
+
+background:#002147;
+padding:20px;
+border-radius:10px;
+text-align:center;
+
+}
+
+
+.timer span{
+
+display:block;
+font-size:45px;
+font-weight:bold;
+color:#f5c542;
+
+}
+
+
+
+.progress{
+
+background:#333;
+height:35px;
+border-radius:20px;
+overflow:hidden;
+
+}
+
+
+.progress div{
+
+height:100%;
+width:4%;
+background:#d71920;
+
+}
+
+
+
+.news{
+
+background:#111;
+padding:15px;
+margin-top:20px;
+border-left:5px solid #f5c542;
+
+}
+
+
+
+.goose{
+
+text-align:center;
+
+}
+
+
+.goose img{
+
+width:300px;
+max-width:100%;
+border-radius:20px;
+margin-top:20px;
+
+}
+
+
+
+.timeline p{
+
+margin:15px 0;
+
+}
+
+
+
+button{
+
+background:#008542;
+color:white;
+border:none;
+padding:18px 35px;
+border-radius:10px;
+font-size:20px;
+cursor:pointer;
+
+}
+
+
+
+button:hover{
+
+transform:scale(1.05);
+
+}
+
+
+
+.closed{
+
+background:#008542 !important;
+
+}
+
+
+
+footer{
+
+text-align:center;
+padding:30px;
+opacity:.6;
+
+}
+
+
+
+@media(max-width:700px){
+
+.counter{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+header h1{
+
+font-size:28px;
+
+}
+
+.big{
+
+font-size:45px;
+
+}
+
+}
+
+
+</style>
+
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<h1>🍺 National Angus Pint Monitoring Service</h1>
+
+<p>Department of Westhill Social Affairs & Friendship Enforcement</p>
+
+</header>
+
+
+
+<div class="container">
+
+
+<div id="alert" class="alert">
+
+🚨 ACTIVE INCIDENT: ANGUS HAS FAILED TO ATTEND A PINT 🚨
+
+</div>
+
+
+
+
+<div class="card">
+
+<h2>Current Case Status</h2>
+
+<div id="status" class="big">
+
+❌ NO
+
+</div>
+
+
+<p style="text-align:center;font-size:22px">
+
+Case Reference: NPM-2025-0001
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="card">
+
+
+<h2>⏱ Time Since Angus Moved To Westhill</h2>
+
+
+<div class="counter">
+
+
+<div class="timer">
+
+<span id="days">400</span>
+
+Days
+
+</div>
+
+
+<div class="timer">
+
+<span id="hours">00</span>
+
+Hours
+
+</div>
+
+
+<div class="timer">
+
+<span id="minutes">00</span>
+
+Minutes
+
+</div>
+
+
+<div class="timer">
+
+<span id="seconds">00</span>
+
+Seconds
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="grid">
+
+
+<div class="card">
+
+<h2>🚨 Risk Assessment</h2>
+
+<h1 style="color:#ff4444">
+
+CRITICAL
+
+</h1>
+
+
+<p>
+
+Chance of Angus attending this weekend:
+
+</p>
+
+
+<br>
+
+
+<div class="progress">
+
+<div></div>
+
+</div>
+
+
+<p>
+
+4% (optimistic estimate)
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="card">
+
+<h2>💬 Official Angus Excuse</h2>
+
+<p id="excuse">
+
+Loading...
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="card goose">
+
+<h2>🪿 Official Investigation Mascot</h2>
+
+<p>
+
+The Goose of Accountability has been deployed.
+
+Unlike Angus, the goose understands the importance of showing up.
+
+</p>
+
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Goose_swimming.jpg"
+alt="Official goose">
+
+
+</div>
+
+
+
+
+
+
+
+<div class="card">
+
+
+<h2>📰 Breaking News</h2>
+
+
+<div class="news" id="news">
+
+BREAKING: Angus continues to avoid Westhill hospitality.
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="card timeline">
+
+
+<h2>🔍 Investigation Timeline</h2>
+
+
+<p>
+
+✅ Day 0 - Angus arrives in Westhill
+
+</p>
+
+
+<p>
+
+❌ Day 7 - First pint invitation ignored
+
+</p>
+
+
+<p>
+
+❌ Day 100 - Friends begin questioning commitment
+
+</p>
+
+
+<p>
+
+⚠ Day 300 - Situation escalated
+
+</p>
+
+
+<p>
+
+🚨 Day 400 - National monitoring activated
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div style="text-align:center;margin-top:40px">
+
+
+<button onclick="closeCase()">
+
+🍺 Angus Has Finally Had A Pint
+
+</button>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+<footer>
+
+Official website of absolutely no importance whatsoever.
+
+</footer>
+
+
+
+
+
+
+<script>
+
+
+const startDate = new Date();
+
+startDate.setDate(startDate.getDate()-400);
+
+
+
+function updateCounter(){
+
+
+let now=new Date();
+
+let diff=now-startDate;
+
+
+document.getElementById("days").innerHTML=Math.floor(diff/86400000);
+
+document.getElementById("hours").innerHTML=Math.floor(diff/3600000)%24;
+
+document.getElementById("minutes").innerHTML=Math.floor(diff/60000)%60;
+
+document.getElementById("seconds").innerHTML=Math.floor(diff/1000)%60;
+
+
+}
+
+
+setInterval(updateCounter,1000);
+
+updateCounter();
+
+
+
+
+const excuses=[
+
+"\"I'll definitely come next weekend\"",
+
+"\"Been meaning to\"",
+
+"\"Westhill isn't going anywhere\"",
+
+"\"Need to check my diary\"",
+
+"\"Something came up\"",
+
+"\"No comment from Angus at this time\""
+
+];
+
+
+setInterval(()=>{
+
+document.getElementById("excuse").innerHTML=
+
+excuses[Math.floor(Math.random()*excuses.length)];
+
+},4000);
+
+
+
+
+const news=[
+
+"BREAKING: Angus spotted near Westhill. False alarm. He was buying milk.",
+
+"UPDATE: Goose remains more reliable than Angus.",
+
+"Authorities confirm another weekend without progress.",
+
+"Public patience levels reaching concerning levels."
+
+];
+
+
+setInterval(()=>{
+
+document.getElementById("news").innerHTML=
+
+news[Math.floor(Math.random()*news.length)];
+
+},5000);
+
+
+
+
+
+function closeCase(){
+
+
+document.getElementById("alert").innerHTML=
+
+"✅ INCIDENT CLOSED: ANGUS HAS FINALLY ARRIVED 🍺";
+
+
+document.getElementById("alert").classList.add("closed");
+
+
+document.getElementById("status").innerHTML="🍺 YES";
+
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>
